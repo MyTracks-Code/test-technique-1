@@ -23,8 +23,8 @@ type Status = "all" | "active" | "completed";
 
 const status: Record<Status, string> = {
   all: "Tous",
-  active: "À faire",
-  completed: "Faites",
+  active: "Actifs",
+  completed: "Terminés",
 };
 
 const statusEntries = Object.entries(status) as [Status, string][];
