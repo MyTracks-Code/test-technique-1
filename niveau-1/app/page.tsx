@@ -115,7 +115,13 @@ export default function TodoApp() {
                 />
               </ItemMedia>
               <ItemContent>
-                <ItemTitle>{todo.text}</ItemTitle>
+                <ItemTitle
+                  className={
+                    todo.completed ? "text-muted-foreground line-through" : ""
+                  }
+                >
+                  {todo.text}
+                </ItemTitle>
               </ItemContent>
               <Button
                 variant="ghost"
