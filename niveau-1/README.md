@@ -1,28 +1,28 @@
-# Todo App Interview Test
+# Test d'entretien - Application Todo
 
-Welcome! Your task is to fix a simple Todo Application. The app has several bugs and missing features that you need to identify and resolve.
+Bienvenue ! Votre tâche consiste à corriger une application Todo simple. L'application comporte plusieurs bugs et fonctionnalités manquantes que vous devez identifier et résoudre.
 
-## Objectives
+## Objectifs
 
-1.  **Fix the Delete Button**: The delete button (trash icon) appears when you hover over a todo item, but clicking it currently does nothing.
-2.  **Implement Toggle Done**: Clicking the checkbox should mark a task as completed (line-through), but it's currently not working.
-3.  **Prevent Empty Todos**: The app allows creating empty tasks. Add a verification to prevent adding a todo if the input is empty or only contains whitespace.
-4.  **Fix the Remaining Items Count**: The counter at the bottom should only show the number of *active* (uncompleted) tasks, but it currently shows the total number of tasks.
-5.  **Implement Filtering**: The "All", "Active", and "Completed" filters are currently not working. The list should update based on the selected filter.
+1.  **Corriger le bouton Supprimer** : Le bouton de suppression (icône de corbeille) apparaît lorsque vous survolez un élément todo, mais cliquer dessus ne fait actuellement rien.
+2.  **Implémenter le basculement Terminé** : Cliquer sur la case à cocher devrait marquer une tâche comme terminée (texte barré), mais cela ne fonctionne pas actuellement.
+3.  **Empêcher les Todos vides** : L'application permet de créer des tâches vides. Ajoutez une vérification pour empêcher l'ajout d'un todo si le champ de saisie est vide ou ne contient que des espaces.
+4.  **Corriger le compteur d'éléments restants** : Le compteur en bas devrait afficher uniquement le nombre de tâches _actives_ (non terminées), mais il affiche actuellement le nombre total de tâches.
+5.  **Implémenter le filtrage** : Les filtres "Tous", "Actifs" et "Terminés" ne fonctionnent pas actuellement. La liste devrait se mettre à jour en fonction du filtre sélectionné.
 
-## Requirements
+## Exigences
 
--   The application uses React and Tailwind CSS.
--   Do not use any external libraries for the state management (stick to React Hooks).
--   No database is required; keeping the data in the local session (component state) is sufficient.
+- L'application utilise React et Tailwind CSS.
+- N'utilisez aucune bibliothèque externe pour la gestion d'état (tenez-vous-en aux Hooks React).
+- Aucune base de données n'est requise ; conserver les données dans la session locale (état du composant) est suffisant.
 
-## Getting Started
+## Démarrage
 
-First, run the development server:
+Tout d'abord, lancez le serveur de développement :
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Ouvrez [http://localhost:3000](http://localhost:3000) avec votre navigateur pour voir le résultat.
