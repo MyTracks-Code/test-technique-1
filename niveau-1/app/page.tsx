@@ -3,6 +3,7 @@
 import { Trash2Icon } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Input } from "@/components/ui/input";
 import {
@@ -70,78 +71,81 @@ export default function TodoApp() {
 
   return (
     <main className="min-h-screen bg-gray-100 py-12 px-4">
-      <div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden p-6">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
-          Mes tâches
-        </h1>
+      <Card size="lg" className="max-w-md mx-auto shadow-md">
+        <CardHeader>
+          <CardTitle className="font-bold text-center text-gray-800">
+            Mes tâches
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleAddTodo} className="flex gap-2 mb-6">
+            <Input
+              type="text"
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              placeholder="Ajouter une nouvelle tâche..."
+            />
+            <Button type="submit">Ajouter</Button>
+          </form>
 
-        <form onSubmit={handleAddTodo} className="flex gap-2 mb-6">
-          <Input
-            type="text"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            placeholder="Ajouter une nouvelle tâche..."
-          />
-          <Button type="submit">Ajouter</Button>
-        </form>
-
-        <div className="flex items-center justify-between mb-4 text-sm text-gray-500 border-b pb-4">
-          <span>{remainingCount} tâches restantes</span>
-          <div className="flex gap-1">
-            {statusEntries.map(([key, label]) => (
-              <Button
-                key={key}
-                type="button"
-                onClick={() => setFilter(key)}
-                variant="ghost"
-                size="sm"
-                className={
-                  filter === key ? "text-primary hover:text-primary" : ""
-                }
-              >
-                {label}
-              </Button>
-            ))}
-          </div>
-        </div>
-
-        <ItemGroup>
-          {filteredTodos.map((todo) => (
-            <Item key={todo.id} size="sm" variant="muted" className="group">
-              <ItemMedia>
-                <Checkbox
-                  checked={todo.completed}
-                  onCheckedChange={() => handleToggleTodo(todo.id)}
-                />
-              </ItemMedia>
-              <ItemContent>
-                <ItemTitle
+          <div className="flex items-center justify-between mb-4 text-sm text-gray-500 border-b pb-4">
+            <span>{remainingCount} tâches restantes</span>
+            <div className="flex gap-1">
+              {statusEntries.map(([key, label]) => (
+                <Button
+                  key={key}
+                  type="button"
+                  onClick={() => setFilter(key)}
+                  variant="ghost"
+                  size="sm"
                   className={
-                    todo.completed ? "text-muted-foreground line-through" : ""
+                    filter === key ? "text-primary hover:text-primary" : ""
                   }
                 >
-                  {todo.text}
-                </ItemTitle>
-              </ItemContent>
-              <Button
-                variant="ghost"
-                size="icon-sm"
-                type="button"
-                aria-label="Supprimer la tâche"
-                className="opacity-0 group-hover:opacity-100"
-                onClick={() => handleDeleteTodo(todo.id)}
-              >
-                <Trash2Icon className="text-red-500" />
-              </Button>
-            </Item>
-          ))}
-          {filteredTodos.length === 0 && (
-            <p className="text-center text-gray-500 py-4">
-              Aucune tâche trouvée.
-            </p>
-          )}
-        </ItemGroup>
-      </div>
+                  {label}
+                </Button>
+              ))}
+            </div>
+          </div>
+
+          <ItemGroup>
+            {filteredTodos.map((todo) => (
+              <Item key={todo.id} size="sm" variant="muted" className="group">
+                <ItemMedia>
+                  <Checkbox
+                    checked={todo.completed}
+                    onCheckedChange={() => handleToggleTodo(todo.id)}
+                  />
+                </ItemMedia>
+                <ItemContent>
+                  <ItemTitle
+                    className={
+                      todo.completed ? "text-muted-foreground line-through" : ""
+                    }
+                  >
+                    {todo.text}
+                  </ItemTitle>
+                </ItemContent>
+                <Button
+                  variant="ghost"
+                  size="icon-sm"
+                  type="button"
+                  aria-label="Supprimer la tâche"
+                  className="opacity-0 group-hover:opacity-100 transition:opacity"
+                  onClick={() => handleDeleteTodo(todo.id)}
+                >
+                  <Trash2Icon className="text-red-500" />
+                </Button>
+              </Item>
+            ))}
+            {filteredTodos.length === 0 && (
+              <p className="text-center text-gray-500 py-4">
+                Aucune tâche trouvée.
+              </p>
+            )}
+          </ItemGroup>
+        </CardContent>
+      </Card>
     </main>
   );
 }
